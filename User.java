@@ -18,9 +18,7 @@ public class User {
   public void sendMoment(String moment) {
   }
   public Map<User, Moment> checkMoments() {
-    return new HashMap<User, Moment>() {{
-      put(new User("Kongzi", "password", "213987"), new Moment("Yanhui did not repeat a fault."));
-    }};
+    return MomentsService.getMoments(this);
   }
   public String getUsername() {
     return this.username;
