@@ -1,14 +1,14 @@
 #language:zh-CN
-功能: an user can see the moments and comments of her friends in Wechat Moments
+功能: 用户能在微信朋友圈中看到朋友们所发的朋友圈微信
 
-场景: an user can see a moment of her friend
-假如 Kongzi is the Wechat friend of Ben
-而且 Kongzi sends a moment "天下有道则现" in Wechat Moments
-当 Ben checks the Wechat Moments
-那么 Ben could see the moment "天下有道则现" from Kongzi in Wechat Moments
+场景: 用户在朋友圈能看到朋友所发的朋友圈微信
+假如 孔子是Ben的微信朋友
+而且 孔子在朋友圈发了一条朋友圈微信"天下有道则现"
+当 Ben查看微信朋友圈时
+那么 Ben能在微信朋友圈中看到孔子所发的朋友圈微信"天下有道则现"
 
-场景: an user cannot see a moment of an user who is not her friend
-假如 Laozi is not the Wechat friend of Ben
-而且 Laozi sends a moment "圣人处无为之事" in Wechat Moments
-当 Ben checks the Wechat Moments
-那么 Ben could not see the moment "圣人处无为之事" from Laozi in Wechat Moments
+场景: 用户在朋友圈不能看到不是朋友的用户所发的朋友圈微信
+假如 老子不是Ben的微信朋友
+而且 老子在朋友圈发了一条朋友圈微信"圣人处无为之事"
+当 Ben查看微信朋友圈时
+那么 Ben不能在微信朋友圈中看到老子所发的朋友圈微信"圣人处无为之事"

@@ -1,6 +1,6 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-import cucumber.api.java.en.*;
+import cucumber.api.java.zh_cn.*;
 import java.util.HashMap;
 
 public class CucumberMomentsStepDef {
@@ -9,26 +9,26 @@ public class CucumberMomentsStepDef {
   private User laozi = null;
   private HashMap<User, Moment> moments = null;
 
-  @Given("^Kongzi is the Wechat friend of Ben$")
-  public void kongziIsTheWechatFriendOfBen() throws Throwable {
+  @假如("^孔子是Ben的微信朋友$")
+  public void 孔子是Ben的微信朋友() throws Throwable {
     ben = IdentityAndAccessService.getUser("Ben", "password", "231234");
     kongzi = IdentityAndAccessService.getUser("Kongzi", "password", "213987");
     ben.sendFriendAddingRequestTo(kongzi);
     kongzi.acceptFriendAddingRequestFrom(ben);
   }
 
-  @Given("^Kongzi sends a moment \"(.*?)\" in Wechat Moments$")
-  public void kongziSendsAMomentInWechatMoments(String moment) throws Throwable {
+  @假如("^孔子在朋友圈发了一条朋友圈微信\"(.*?)\"$")
+  public void 孔子在朋友圈发了一条朋友圈微信(String moment) throws Throwable {
     kongzi.sendMoment(moment);
   }
 
-  @When("^Ben checks the Wechat Moments$")
-  public void benChecksTheWechatMoments() throws Throwable {
+  @当("^Ben查看微信朋友圈时$")
+  public void Ben查看微信朋友圈时() throws Throwable {
     moments = ben.checkMoments();
   }
 
-  @Then("^Ben could see the moment \"(.*?)\" from Kongzi in Wechat Moments$")
-  public void benCouldSeeTheMomentFromKongziInWechatMoments(String moment) throws Throwable {
+  @那么("^Ben能在微信朋友圈中看到孔子所发的朋友圈微信\"(.*?)\"$")
+  public void Ben能在微信朋友圈中看到孔子所发的朋友圈微信(String moment) throws Throwable {
     assertTrue(momentsContains(moments, "Kongzi", moment));
   }
 
@@ -60,20 +60,19 @@ public class CucumberMomentsStepDef {
     return false;
   }
 
-  @Given("^Laozi is not the Wechat friend of Ben$")
-  public void laoziIsNotTheWechatFriendOfBen() throws Throwable {
+  @假如("^老子不是Ben的微信朋友$")
+  public void 老子不是Ben的微信朋友() throws Throwable {
     ben = IdentityAndAccessService.getUser("Ben", "password", "231234");
     laozi = IdentityAndAccessService.getUser("Laozi", "password", "293987");
   }
 
-  @Given("^Laozi sends a moment \"(.*?)\" in Wechat Moments$")
-  public void laoziSendsAMomentInWechatMoments(String moment) throws Throwable {
+  @假如("^老子在朋友圈发了一条朋友圈微信\"(.*?)\"$")
+  public void 老子在朋友圈发了一条朋友圈微信(String moment) throws Throwable {
     laozi.sendMoment(moment);
   }
 
-  @Then("^Ben could not see the moment \"(.*?)\" from Laozi in Wechat Moments$")
-  public void benCouldNotSeeTheMomentFromLaoziInWechatMoments(String moment) throws Throwable {
+  @那么("^Ben不能在微信朋友圈中看到老子所发的朋友圈微信\"(.*?)\"$")
+  public void Ben不能在微信朋友圈中看到老子所发的朋友圈微信(String moment) throws Throwable {
     assertFalse(momentsContains(moments, "Laozi", moment));
   }
 }
-
