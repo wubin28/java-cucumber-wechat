@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class CucumberMomentsStepDef {
   private User ben = null;
   private User kongzi = null;
+  private User laozi = null;
   private HashMap<User, Moment> moments = null;
 
   @Given("^Kongzi is the Wechat friend of Ben$")
@@ -28,7 +29,6 @@ public class CucumberMomentsStepDef {
 
   @Then("^Ben could see the moment \"(.*?)\" from Kongzi in Wechat Moments$")
   public void benCouldSeeTheMomentFromKongziInWechatMoments(String moment) throws Throwable {
-    System.out.println(">>>moments: " + moments);
     assertTrue(momentsContains(moments, "Kongzi", moment));
   }
 
@@ -58,6 +58,22 @@ public class CucumberMomentsStepDef {
       if (user.getUsername().equals(username) && moments.get(user).getMomentString().equals(momentString)) return true;
     }
     return false;
+  }
+
+  @Given("^Laozi is not the Wechat friend of Ben$")
+  public void laoziIsNotTheWechatFriendOfBen() throws Throwable {
+    ben = IdentityAndAccessService.getUser("Ben", "password", "231234");
+    laozi = IdentityAndAccessService.getUser("Laozi", "password", "293987");
+  }
+
+  @Given("^Laozi sends a moment \"(.*?)\" in Wechat Moments$")
+  public void laoziSendsAMomentInWechatMoments(String moment) throws Throwable {
+    laozi.sendMoment(moment);
+  }
+
+  @Then("^Ben could not see the moment \"(.*?)\" from Laozi in Wechat Moments$")
+  public void benCouldNotSeeTheMomentFromLaoziInWechatMoments(String moment) throws Throwable {
+    assertFalse(momentsContains(moments, "Laozi", moment));
   }
 }
 
